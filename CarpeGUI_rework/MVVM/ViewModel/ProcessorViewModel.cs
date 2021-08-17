@@ -48,7 +48,6 @@ namespace CarpeGUI_rework.MVVM.ViewModel
             {
                 if (Page_CurrentView == page1)
                 { 
-                    MessageBox.Show(page1.timezone);
                     Page_CurrentView = page2;
                 }
                 else
