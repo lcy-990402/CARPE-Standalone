@@ -42,13 +42,13 @@ namespace CarpeGUI_rework.MVVM.ViewModel
             page3 = new ProcessorPage3ViewModel();
 
             Page_CurrentView = page1;
-            page1.timezone = "Asia / Seoul + 09:00";
+            page1.timezone = "Asia/Seoul +09:00";
 
             NextButtonCommand = new RelayCommand(o =>
             {
                 if (Page_CurrentView == page1)
-                {
-                    MessageBox.Show(page1.timezone.ToString());
+                { 
+                    MessageBox.Show(page1.timezone);
                     Page_CurrentView = page2;
                 }
                 else

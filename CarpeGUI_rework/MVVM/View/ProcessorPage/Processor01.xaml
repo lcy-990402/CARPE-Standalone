@@ -179,11 +179,11 @@
                            Margin="10,0,0,0" />
             </Border>
             <Border Height="40" Width="400">
-                <ComboBox Name="Timezone_box"
+                <ComboBox Name="time_zone"
                           HorizontalAlignment="Right"
                           VerticalAlignment="Center"
                           Margin="0,9"
-                          SelectedIndex="309"
+                          IsEditable="False"
                           Text="{Binding timezone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           Width="393">
                     <ComboBoxItem>Africa/Abidjan          +00:00</ComboBoxItem>

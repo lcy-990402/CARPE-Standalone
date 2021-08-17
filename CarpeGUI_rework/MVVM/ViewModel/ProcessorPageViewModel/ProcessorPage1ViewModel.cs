@@ -9,6 +9,7 @@ using CarpeGUI_rework.MVVM.View.ProcessorPage;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel
 {
@@ -101,7 +102,10 @@ namespace CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel
         public string _timezone;
         public string timezone
         {
-            get { return _timezone; }
+            get 
+            {
+                return _timezone;
+            }
             set
             {
                 _timezone = value;
