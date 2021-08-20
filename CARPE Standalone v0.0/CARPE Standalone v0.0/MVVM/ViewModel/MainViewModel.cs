@@ -12,78 +12,61 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
-
-        public RelayCommand HomeViewCommand { get; set; }
-
-        public RelayCommand OpenDBCommand { get; set; }
-
-        public RelayCommand TempViewCommand { get; set; }
-
-        public RelayCommand ProcessViewCommand { get; set; }
-
-        public RelayCommand OffButtonCommand { get; set; }
-
-        public HomeViewmodel HomeVM { get; set; }
-
-        public TempViewModel TempVM { get; set; }
-
+        #region Member       
+        
+        /// <summary>
+        /// Process용 ViewModel과 Analyze용 ViewModel
+        /// </summary>
         public ProcessViewModel ProcessVM { get; set; }
+        public AnalyzeViewModel AnalyzeVM { get; set; }
 
+        /// <summary>
+        /// Process, Analyze 버튼 커맨드
+        /// </summary>
+        public RelayCommand ProcessCommand { get; set; }
+        public RelayCommand AnalyzeCommand { get; set; }
+
+        /// <summary>
+        /// 현재 View
+        /// </summary>
         private object _currentView;
 
         public object CurrentView
         {
             get { return _currentView; }
-            set 
-            { 
+            set
+            {
                 _currentView = value;
                 OnPropertyChanged();
             }
         }
 
+
+        #endregion
+
+        #region Method
         public MainViewModel()
-        {
-            HomeVM = new HomeViewmodel();            
-            TempVM = new TempViewModel();
-            ProcessVM = new ProcessViewModel();
+        {                     
 
-            CurrentView = HomeVM;
-
-            HomeViewCommand = new RelayCommand(o =>
+            ProcessCommand = new RelayCommand(o =>
             {
-                CurrentView = HomeVM;
-            });
-
-            TempViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = TempVM;
-            });
-
-            ProcessViewCommand = new RelayCommand(o =>
-            {
+                ProcessVM = new ProcessViewModel();
                 CurrentView = ProcessVM;
             });
 
-            OpenDBCommand = new RelayCommand(o =>
+            AnalyzeCommand = new RelayCommand(o =>
             {
                 OpenFileDialog dig = new OpenFileDialog();
                 dig.Filter = "db files (*.db) |*.db|All files (*.*)|*.*";
                 dig.FilterIndex = 1;
                 bool? result = dig.ShowDialog();
 
-                if (result == true)
-                {
-                    TempData.DBPath = dig.FileName;
-                }
-                HomeVM.Update();
-            });
+                if (result == true) TempData.DBPath = dig.FileName;
 
-            OffButtonCommand = new RelayCommand(o =>
-            {
-                Application.Current.Shutdown();
+                AnalyzeVM = new AnalyzeViewModel();
+                CurrentView = AnalyzeVM;
             });
-
         }
-
+        #endregion
     }
 }

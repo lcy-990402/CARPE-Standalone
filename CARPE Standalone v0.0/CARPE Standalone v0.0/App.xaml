@@ -4,8 +4,10 @@
              xmlns:local="clr-namespace:CARPE_Standalone_v0._0"
              xmlns:viewModel="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel"
              xmlns:processViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel._ProcessViewModel"
+             xmlns:analyzeViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze"
              xmlns:view="clr-namespace:CARPE_Standalone_v0._0.MVVM.View"
              xmlns:processView ="clr-namespace:CARPE_Standalone_v0._0.MVVM.View._ProcessView"
+             xmlns:analyzeView ="clr-namespace:CARPE_Standalone_v0._0.MVVM.View.Analyze"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -14,7 +16,18 @@
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/DataGridTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ScrollViewerTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+
+            <DataTemplate DataType="{x:Type viewModel:AnalyzeViewModel}">
+                <view:AnalyzeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type analyzeViewModel:TableViewModel}">
+                <analyzeView:TableView/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewmodel}">
                 <view:HomeView/>

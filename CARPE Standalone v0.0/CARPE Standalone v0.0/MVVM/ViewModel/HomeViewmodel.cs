@@ -14,7 +14,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 {
     class HomeViewmodel : ObservableObject
     {
-        #region Members
+        #region Member
         private ObservableCollection<DataTable> _myDataTable;
         private ObservableCollection<string> _myDataString;
         private string _dbLoaded;
@@ -95,6 +95,8 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
             if (!TableCountUpdate()) return 3;
             if (!FileExtensionCountUpdate()) return 4;
 
+            con.Close();
+
             return 0;
         }
 
@@ -155,17 +157,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
             sql_cmd = new SQLiteCommand("SELECT * FROM partition_info", con);
             sql_reader = sql_cmd.ExecuteReader();
             MyDataTable.Add(new DataTable());
-            for(int i = 1; i< sql_reader.FieldCount; i++)
-            {
-                MyDataTable[1].Columns.Add(sql_reader.GetName(i));
-            }
-            while (sql_reader.Read())
-            {
-                List<string> data = new List<string>();
-                for (int i = 1; i < sql_reader.FieldCount; i++) data.Add(sql_reader[i] + "");
-
-                MyDataTable[1].Rows.Add(data.ToArray());
-            }
+            MyDataTable[1].Load(sql_reader);
             
             return true;
         }
@@ -176,12 +168,10 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
         /// <returns> 업데이트 성공시 True, 실패시 False</returns>
         private bool TableCountUpdate()
         {
-            sql_cmd = new SQLiteCommand("SELECT * FROM sqlite_sequence", con);
-            sql_reader = sql_cmd.ExecuteReader();
-
             MyDataTable.Add(new DataTable());
+
             MyDataTable[2].Columns.Add("Table Name");
-            MyDataTable[2].Columns.Add("Row Count");
+            MyDataTable[2].Columns.Add("Row Count", 1.GetType());
 
             //각각 테이블의 Row 갯수 Count
             foreach (DataRow row in con.GetSchema("Tables").Rows)
@@ -196,6 +186,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
                         (string)row[2], sql_reader[0].ToString()
                     }.ToArray());
             }
+
             return true;
         }
 
@@ -205,22 +196,11 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
         /// <returns> 업데이트 성공시 True, 실패시 False</returns>
         private bool FileExtensionCountUpdate()
         {
-            sql_cmd = new SQLiteCommand("Select extension, count(extension) FROM file_info group by extension", con);
+            sql_cmd = new SQLiteCommand("Select extension, count(extension) as count FROM file_info group by extension", con);
             sql_reader = sql_cmd.ExecuteReader();
 
             MyDataTable.Add(new DataTable());
-
-            MyDataTable[3].Columns.Add("Extension");
-            MyDataTable[3].Columns.Add("Count", 1.GetType());
-
-            while (sql_reader.Read())
-            {
-                MyDataTable[3].Rows.Add(new List<string>
-                {
-                    sql_reader[0].ToString(), sql_reader[1].ToString()
-                }.ToArray());
-            }
-
+            MyDataTable[3].Load(sql_reader);
             return true;
         }
         #endregion

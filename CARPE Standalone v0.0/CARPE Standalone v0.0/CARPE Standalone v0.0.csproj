@@ -47,7 +47,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>carpe.ico</ApplicationIcon>
+    <ApplicationIcon>Images\carpe.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
@@ -129,6 +129,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\AnalyzeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Analyze\TableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +161,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Theme\ButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ComboBoxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\DataGridTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +187,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\ViewModel\AnalyzeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Analyze\TableViewModel.cs" />
     <Compile Include="MVVM\ViewModel\HomeViewmodel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ProcessViewModel.cs" />
@@ -178,6 +196,12 @@
     <Compile Include="MVVM\ViewModel\_ProcessViewModel\Process1ViewModel.cs" />
     <Compile Include="MVVM\ViewModel\_ProcessViewModel\Process2ViewModel.cs" />
     <Compile Include="MVVM\ViewModel\_ProcessViewModel\Process3ViewModel.cs" />
+    <Compile Include="MVVM\View\AnalyzeView.xaml.cs">
+      <DependentUpon>AnalyzeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Analyze\TableView.xaml.cs">
+      <DependentUpon>TableView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -251,7 +275,7 @@
     <Resource Include="Images\new_logo_carpe.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="carpe.ico" />
+    <Resource Include="Images\carpe.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

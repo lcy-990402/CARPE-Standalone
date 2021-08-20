@@ -16,87 +16,50 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Border CornerRadius="20">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#253758" Offset="0.0"/>
-                <GradientStop Color="#2f205a" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
-        <Grid Margin="-10,0,10,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    
+    <Grid>
+        <!-- 시작 화면 -->
+        <Border CornerRadius="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#253758" Offset="0.0"/>
+                    <GradientStop Color="#2f205a" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Source="/Images/new_logo_carpe.png"
-                   Width="153" Height="75"
-                   Margin="23,0,0,0.2"/>
-            <TextBlock
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Margin="80,0,0,0"
-                       Foreground="White"
-                       FontSize="22"
-                      />
-            <Grid Grid.Row="0" Grid.Column="1">
-                <StackPanel Orientation="Horizontal" Margin="0,0,30,0">
-                    <RadioButton Content="Home"
-                             Height="50"
-                             FontSize="14"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
-                    <RadioButton Content="Open DB"
-                             Height="50"
-                             FontSize="14"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
-                             Command="{Binding OpenDBCommand}"/>
-                    <RadioButton Content="Tree View"
-                             Height="50"
-                             FontSize="14"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                <Image Width="300"
+                       Source="/Images/new_logo_carpe.png"/>
+                <Button Grid.Row="1" 
+                        Width="200"
+                        Margin="10,30,10,0"
+                        Foreground="White"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Content="Process"
+                        Command="{Binding ProcessCommand}"
+                        Style="{StaticResource ButtonTheme}"/>
 
-                    <RadioButton Content="Table View"
-                             Height="50"
-                             FontSize="14"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                <Button Grid.Row="2"
+                        Margin="10,30,10,0"
+                        Width="200"
+                        Foreground="White"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Content="Analyze"
+                        Command="{Binding AnalyzeCommand}"
+                        Style="{StaticResource ButtonTheme}"/>
 
-                    <RadioButton Content="Temp View"
-                             Height="50"
-                             FontSize="14"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"
-                              Command="{Binding TempViewCommand}"/>
-                </StackPanel>
-                <Button Content="⨉" 
-                        Width="20" 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top" 
-                        Background="Transparent" 
-                        BorderThickness="0" 
-                        Command="{Binding OffButtonCommand}"/>
             </Grid>
-            <ContentControl Grid.Row="1" 
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="10"
-                            Content="{Binding CurrentView}">
-
-            </ContentControl>
-
-        </Grid>
-    </Border>
+        </Border>
+        
+        <!-- Process / Analyze 선택 후 넘어갈 화면-->
+        <ContentControl Content="{Binding CurrentView}"/>
+    </Grid>
 </Window>

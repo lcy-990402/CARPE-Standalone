@@ -98,7 +98,7 @@
                            Text="Tables"
                            Foreground="White"
                            DockPanel.Dock="Top"/>
-                    <DataGrid ItemsSource="{Binding Path =MyDataTable[2]}"
+                    <DataGrid ItemsSource="{Binding Path=MyDataTable[2]}"
                               Style="{StaticResource DataGridTheme}"
                               MaxColumnWidth="100">
                     </DataGrid>
