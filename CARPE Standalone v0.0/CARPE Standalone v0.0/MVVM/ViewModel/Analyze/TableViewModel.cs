@@ -26,7 +26,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
 
         public DataTable MyDataTable
         {
-            get{ return _dataTable; }
+            get { return _dataTable; }
             set
             {
                 _dataTable = value;
@@ -45,13 +45,13 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
         public string SelectedTable
         {
             get { return _selectedTable; }
-            set 
+            set
             {
-                if(_selectedTable != value)
+                if (_selectedTable != value)
                 {
                     _selectedTable = value;
                     OnPropertyChanged();
-                }                         
+                }
             }
         }
 
@@ -70,7 +70,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
             con = new SQLiteConnection("Data Source=" + TempData.DBPath);
             con.Open();
             sql_cmd = new SQLiteCommand("SELECT * FROM case_info", con);
-            for(int i = 0; i <  con.GetSchema("Tables").Rows.Count; i++)
+            for (int i = 0; i < con.GetSchema("Tables").Rows.Count; i++)
             {
                 DataRow row = con.GetSchema("Tables").Rows[i];
                 if ((string)row[2] == "sqlite_sequence") continue;
@@ -86,7 +86,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
                 sql_reader = sql_cmd.ExecuteReader();
                 tmpdataTable.Load(sql_reader);
 
-                MyDataTable = tmpdataTable; 
+                MyDataTable = tmpdataTable;
 
             });
 

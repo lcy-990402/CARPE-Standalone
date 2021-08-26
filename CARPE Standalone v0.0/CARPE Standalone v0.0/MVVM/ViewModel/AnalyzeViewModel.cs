@@ -18,6 +18,8 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 
         public RelayCommand TableViewCommand { get; set; }
 
+        public RelayCommand TreeViewCommand { get; set; }
+
         public RelayCommand TempViewCommand { get; set; }
 
         public RelayCommand OffButtonCommand { get; set; }
@@ -27,6 +29,8 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
         public TempViewModel TempVM { get; set; }
 
         public TableViewModel TableVM { get; set; }
+
+        public TreeViewModel TreeVM { get; set; }
 
 
 
@@ -50,6 +54,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
             HomeVM = new HomeViewmodel();
             TempVM = new TempViewModel();
             TableVM = new TableViewModel();
+            TreeVM = new TreeViewModel();
 
             CurrentView = HomeVM;
 
@@ -61,6 +66,11 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
             TableViewCommand = new RelayCommand(o =>
             {
                 CurrentView = TableVM;
+            });
+
+            TreeViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = TreeVM;
             });
 
             TempViewCommand = new RelayCommand(o =>

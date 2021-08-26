@@ -29,6 +29,10 @@
                 <analyzeView:TableView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type analyzeViewModel:TreeViewModel}">
+                <analyzeView:TreeView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModel:HomeViewmodel}">
                 <view:HomeView/>
             </DataTemplate>
@@ -56,4 +60,9 @@
         </ResourceDictionary>
 
     </Application.Resources>
+    <JumpList.JumpList>
+        <JumpList ShowRecentCategory="True"
+                  ShowFrequentCategory="True">
+        </JumpList>
+    </JumpList.JumpList>
 </Application>

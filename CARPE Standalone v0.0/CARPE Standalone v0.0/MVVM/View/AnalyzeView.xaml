@@ -49,7 +49,8 @@
                                 Height="50"
                                 FontSize="14"
                                 Foreground="White"
-                                Style="{StaticResource MenuButtonTheme}"/>
+                                Style="{StaticResource MenuButtonTheme}"
+                                Command="{Binding TreeViewCommand}"/>
                     <RadioButton Content="Table View"
                                  Height="50"
                                  FontSize="14"

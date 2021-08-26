@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="CARPE_Standalone_v0._0.MVVM.View.Analyze.TreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local2 ="clr-namespace:CARPE_Standalone_v0._0.MVVM.Model.TreeView"
+             xmlns:local="clr-namespace:CARPE_Standalone_v0._0.MVVM.View.Analyze"
+             xmlns:analyzeViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze"
+             xmlns:behaviours ="clr-namespace:CARPE_Standalone_v0._0.Behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <HierarchicalDataTemplate x:Key="MainTreeViewTemplate"
+                                  DataType="{x:Type local2:TreeNode}"
+                                  ItemsSource="{Binding Path=SubDirectory}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=Info.Source}"
+                       Height="20"
+                       Width="20"/>
+                <TextBlock Text="{Binding Path=Name}"
+                           Foreground="White"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="MainListViewTemplate"
+                                  DataType="{x:Type local2:TreeNode}">
+            <StackPanel Orientation="Horizontal"
+                        Background="Transparent">
+                <Image Source="{Binding Path=Info.Source}"
+                       Height="20"
+                       Width="20"/>
+                <TextBlock Text="{Binding Path=Name}"
+                           Background="Transparent"
+                           Foreground="White"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <analyzeViewModel:TreeViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TreeView Grid.Row="0" Grid.Column="0"
+                  ItemTemplate="{StaticResource MainTreeViewTemplate}"
+                  ItemsSource="{Binding partitions}"
+                  Background="Transparent">
+            <i:Interaction.Behaviors>
+                <behaviours:BindableSelectedItemBehavior SelectedItem="{Binding SelectedTreeNode, Mode=TwoWay}"/>
+            </i:Interaction.Behaviors>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedItemChanged">
+                    <i:InvokeCommandAction 
+                        Command="{Binding SelectedItemChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TreeView>
+
+        <ListView Grid.Row="1"
+                  Grid.Column="1"
+                  ItemTemplate="{StaticResource MainListViewTemplate}"
+                  ItemsSource="{Binding MainListView}"
+                  Background="Transparent"
+                  Foreground="White">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="white"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Name"
+                                    Width="350"
+                                    CellTemplate="{StaticResource MainListViewTemplate}"/>
+                    <GridViewColumn Header="Created Time"
+                                    Width="175"
+                                    DisplayMemberBinding="{Binding Path=Info.CreatedTime}"/>
+                    <GridViewColumn Header="Modified Time"
+                                    Width="175"
+                                    DisplayMemberBinding="{Binding Path=Info.ModifiedTime}"/>
+                    <GridViewColumn Header="Accessed Time"
+                                    Width="175"
+                                    DisplayMemberBinding="{Binding Path=Info.AccessedTime}"/>
+                    <GridViewColumn Header="Size"
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding Path=Info.Size}"/>
+                    <GridViewColumn Header="Reversal"
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding Path=Info.Reversal}"/>
+                    <GridViewColumn Header="Type"
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding Path=Info.IsDirectory}"/>
+                    <GridViewColumn Header="Parent"
+                                    Width="175"
+                                    DisplayMemberBinding="{Binding Path=Parent.Name}"/>
+                    <GridViewColumn Header="Path"
+                                    Width="500"
+                                    DisplayMemberBinding="{Binding Path=Info.Path}"/>
+                    <GridViewColumn Header="Extension"
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding Path=Info.Extension}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
