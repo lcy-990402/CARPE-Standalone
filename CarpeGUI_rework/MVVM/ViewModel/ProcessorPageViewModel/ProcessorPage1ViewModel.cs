@@ -62,14 +62,14 @@ namespace CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel
 
         }
         
-        private string _CaseID;
-        public string CaseID
+        private string _caseid;
+        public string caseid
         {
-            get { return _CaseID; }
+            get { return _caseid; }
             set
             {
-                _CaseID = value;
-                OnPropertyChanged("CaseID");
+                _caseid = value;
+                OnPropertyChanged("caseid");
             }
 
         }

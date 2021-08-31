@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using CarpeGUI_rework.Core;
+using CarpeGUI_rework.MVVM.Model;
 using CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel;
 namespace CarpeGUI_rework.MVVM.ViewModel
 {
@@ -25,51 +28,7 @@ namespace CarpeGUI_rework.MVVM.ViewModel
         public ProcessorPage2ViewModel page2 { get; set; }
         public ProcessorPage3ViewModel page3 { get; set; }
 
-        private string _log_text;
-        public string log_text
-        {
-            get { return _log_text; }
-            set
-            {
-                _log_text = value;
-                OnPropertyChanged("log_text");
-            }
 
-        }
-        private Button _BeforeButton;
-        public Button BeforeButton
-        {
-            get { return _BeforeButton; }
-            set
-            {
-                _BeforeButton = value;
-                OnPropertyChanged("BeforeButton");
-            }
-
-        }
-        private Button _afterbutton;
-        public Button Afterbutton
-        {
-            get { return _afterbutton; }
-            set
-            {
-                _afterbutton = value;
-                OnPropertyChanged("Afterbutton");
-            }
-
-        }
-
-        private Button _processButton;
-
-        public  Button ProcessButton
-        {
-            get { return _processButton; }
-            set 
-            { 
-                _processButton = value;
-                OnPropertyChanged("ProcessButton");
-            }
-        }
 
 
         private object _page_CurrentView;
@@ -89,7 +48,7 @@ namespace CarpeGUI_rework.MVVM.ViewModel
             page1 = new ProcessorPage1ViewModel();
             page2 = new ProcessorPage2ViewModel();
             page3 = new ProcessorPage3ViewModel();
-
+            string payload = "";
             Page_CurrentView = page1;
             //BeforeButton.Visibility = Visibility.Hidden;
 
@@ -99,7 +58,7 @@ namespace CarpeGUI_rework.MVVM.ViewModel
                 if (Page_CurrentView == page1)
                 { 
                     // check if values are empty
-                    if(page1.src_input == "" || page1.output_input == "" || page1.CaseID == "" || page1.evidenceid == "")
+                    if(page1.src_input == null || page1.output_input == null || page1.caseid == null || page1.evidenceid == null)
                     {
                         MessageBox.Show("Input Path, Output Path, CaseID, Evidence ID Must be Filled.");
                     }
@@ -116,10 +75,59 @@ namespace CarpeGUI_rework.MVVM.ViewModel
                     Page_CurrentView = page3;
                     //BeforeButton.Visibility = Visibility.Hidden;
                     //Afterbutton.Visibility = Visibility.Hidden;
+
                     //start processing
-                    string a = "asdfasdf";
-                    log_text = a;
-                    MessageBox.Show(log_text);
+                    
+                    if (page1.caseid != "")
+                    {
+                        payload += "--cid " + page1.caseid + " ";
+                    }
+                    if (page1.casename != "")
+                    {
+                        payload += "--case-name " + page1.casename + " ";
+                    }
+                    if (page1.evidenceid != "")
+                    {
+                        payload += "--eid " + page1.evidenceid + " ";
+                    }
+                    if (page1.investigator != "")
+                    {
+                        payload += "--investigator " + page1.investigator + " ";
+                    }
+                    if (page1.description != "")
+                    {
+                        payload += "--case_desc " + page1.description + " ";
+                    }
+                    if (page1.timezone != null)
+                    {
+                        payload += "-z " + page1.timezone + " ";
+                    }
+                    //
+                    //make ignore option ->  TBD
+
+                    //get checked values from processor02
+                    List<string> mod_checked = new List<string>();
+                    foreach (Module item in page2.ModuleList)
+                    {
+                        if (item.chk == true)
+                        {
+                            mod_checked.Add(item.module_name.ToString());
+                        }
+                    }
+
+                    //add to payload
+                    if (mod_checked.Count != 0)
+                        payload += "--modules ";
+                    var last_idx = mod_checked.Last();
+                    foreach (var mod in mod_checked)
+                    {
+                        payload += mod.Replace(" ", "_") + ",";
+                        if (mod == last_idx) payload += mod.Replace(" ", "_");
+                    }
+
+                    payload += " --sqlite ";
+                    //page3.log_text += payload;                    
+                    page3.initiate(payload);
                 }
 
             });
