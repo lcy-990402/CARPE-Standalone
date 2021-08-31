@@ -18,6 +18,15 @@
                 <ResourceDictionary Source="Theme/ScrollViewerTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+                <!--여기부터 Processor 전용 Theme-->
+                <ResourceDictionary Source="Theme/InputboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Process_ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Process_ComboBox.xaml"/>
+                <ResourceDictionary Source="Theme/Process_BeforeButton.xaml"/>
+                <ResourceDictionary Source="Theme/Process_NextButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Process_SelectButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Process_ListHeaderTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Process_ListItemTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 

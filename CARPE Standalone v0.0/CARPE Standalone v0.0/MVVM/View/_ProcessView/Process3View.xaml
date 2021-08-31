@@ -4,9 +4,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CARPE_Standalone_v0._0.MVVM.View._ProcessView"
+             xmlns:processViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel._ProcessViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Process 3" FontSize="100"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Processor (3/3)"
+                   Foreground="White"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="10,0,0,20" />
+        <TextBox Name="log_text" 
+                     Margin="10,38,8,10" 
+                     IsReadOnly="True"
+                     Text="{Binding Path=log_text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     Background="Transparent"
+                     ScrollViewer.CanContentScroll="True"   
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Border>
+                <TextBlock Name="progress_txt" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="12"
+                       Foreground="White"
+                       Width="88" Height="20" Margin="10,12,0,11">
+                Progress (%)
+                </TextBlock>
+            </Border>
+            <Border Width="550">
+                <ProgressBar x:Name="progress"
+                         VerticalAlignment="Center"
+                         Minimum="0"
+                         Background="Transparent"
+                         Foreground="White"
+                         Maximum="100"
+                         Value="{Binding progress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50"/>
+            </Border>
+            <Border>
+                <TextBlock Name="percent"
+                       Foreground="White"
+                       VerticalAlignment="Center" HorizontalAlignment="Right" 
+                       RenderTransformOrigin="0.495,-0.15"
+                       Text="{Binding percent, UpdateSourceTrigger=PropertyChanged}" Margin="0,14,10,13"/>
+            </Border>
+
+        </StackPanel>
+
     </Grid>
+
 </UserControl>

@@ -13,10 +13,10 @@
 
         <!--DataGrid 배경색 , 글자색 설정-->
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
 
         <!--DataGrid 내용의 Background 설정-->
-        <Setter Property="RowBackground" Value="Transparent"/>
+        <Setter Property="RowBackground" Value="White"/>
 
         <!-- Border 색과 두께 설정-->
         <Setter Property="BorderBrush" Value="Black"/>
@@ -27,9 +27,10 @@
             <Setter.Value>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Background" Value="DimGray"/>
                     <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="FontWeight" Value="Bold"/>
-                </Style>
+                </Style> 
             </Setter.Value>
         </Setter>
         
@@ -125,8 +126,8 @@
                                     <Setter Property="Width" Value="Auto" />
                                     <Setter Property="Height" Value="8" />
                                     <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

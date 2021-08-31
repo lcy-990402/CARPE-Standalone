@@ -26,6 +26,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
         public RelayCommand ProcessCommand { get; set; }
         public RelayCommand AnalyzeCommand { get; set; }
 
+
         /// <summary>
         /// 현재 View
         /// </summary>
@@ -66,6 +67,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
                 AnalyzeVM = new AnalyzeViewModel();
                 CurrentView = AnalyzeVM;
             });
+
         }
         #endregion
     }

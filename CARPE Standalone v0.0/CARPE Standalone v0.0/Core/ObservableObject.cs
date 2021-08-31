@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CARPE_Standalone_v0._0.Core
 {
-    class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         #region Member
         public event PropertyChangedEventHandler PropertyChanged;

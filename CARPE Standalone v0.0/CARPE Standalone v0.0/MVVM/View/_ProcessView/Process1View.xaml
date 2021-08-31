@@ -4,9 +4,784 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CARPE_Standalone_v0._0.MVVM.View._ProcessView"
+             xmlns:processViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel._ProcessViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Process 1" FontSize="100"/>
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Processor (1/3)"
+                   Foreground="White"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="10,0,0,20" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="40,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Input Path"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         Height="36"
+                         x:Name="source_input"
+                         Text="{Binding Path=src_input,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,0,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}"/>
+            </Border>
+            <Border>
+                <Button x:Name="path1" Command="{Binding OpenfileClick}"
+                        BorderThickness="0"
+                        Style="{StaticResource ModernButton}" Width="41" Margin="0,-7,0,-6" RenderTransformOrigin="0.5,0.244" />
+            </Border>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="40,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Output Path"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="output_input"
+                         Height="36"
+                         Text="{Binding Path= output_input,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" />
+            </Border>
+            <Border>
+                <Button x:Name="path2"
+                        BorderThickness="0"
+                        Command="{Binding OpenpathClick}"
+                        Style="{StaticResource ModernButton}" Width="42" Margin="0,-4,0,-12" />
+            </Border>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Description"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="description"
+                         Height="40"
+                         Text="{Binding Path=description,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" />
+            </Border>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Case Name"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="CaseName"
+                         Height="40"
+                         Text="{Binding Path= casename,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" 
+                         />
+            </Border>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Case ID"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="CaseID"
+                         Height="40"
+                         Text="{Binding Path= caseid,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" />
+            </Border>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Evidence ID"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="EvidenceID"
+                         Height="40"
+                         Text="{Binding Path= evidenceid, UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" />
+            </Border>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Investigator"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border>
+                <TextBox Width="400"
+                         x:Name="Investigator"
+                         Height="40"
+                         Text="{Binding Path= investigator, UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="10,1,10,-6"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernInputbox}" />
+            </Border>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" RenderTransformOrigin="0.691,0.515" Margin="0,10,0,0" Height="30">
+            <Border Width="100">
+                <TextBlock Text="Time Zone"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="10,0,0,0" />
+            </Border>
+            <Border Height="40" Width="410">
+                <ComboBox Name="time_zone"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          Margin="0,8,10,10"
+                          IsEditable="False"
+                          Text="{Binding timezone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          Style="{StaticResource ModernCombobox}"
+                          Width="390">
+                    <ComboBoxItem>Africa/Abidjan          +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Accra            +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Addis_Ababa      +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Algiers          +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Asmara           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Asmera           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Bamako           +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Bangui           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Banjul           +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Bissau           +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Blantyre         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Brazzaville      +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Bujumbura        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Cairo            +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Casablanca       +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Ceuta            +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Conakry          +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Dakar            +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Dar_es_Salaam    +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Djibouti         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Douala           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/El_Aaiun         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Freetown         +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Gaborone         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Harare           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Johannesburg     +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Juba             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Kampala          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Khartoum         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Kigali           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Kinshasa         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Lagos            +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Libreville       +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Lome             +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Luanda           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Lubumbashi       +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Lusaka           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Malabo           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Maputo           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Maseru           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Mbabane          +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Mogadishu        +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Monrovia         +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Nairobi          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Ndjamena         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Niamey           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Nouakchott       +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Ouagadougou      +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Porto-Novo       +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Sao_Tome         +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Timbuktu         +00:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Tripoli          +02:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Tunis            +01:00</ComboBoxItem>
+                    <ComboBoxItem>Africa/Windhoek         +02:00</ComboBoxItem>
+                    <ComboBoxItem>America/Adak            -09:00</ComboBoxItem>
+                    <ComboBoxItem>America/Anchorage       -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/Anguilla        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Antigua         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Araguaina       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Buenos_Aires  -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Catamarca     -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/ComodRivadavia        -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Cordoba       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Jujuy -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/La_Rioja      -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Mendoza       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Rio_Gallegos  -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Salta -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/San_Juan      -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/San_Luis      -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Tucuman       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Argentina/Ushuaia       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Aruba           -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Asuncion        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Atikokan        -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Atka            -09:00</ComboBoxItem>
+                    <ComboBoxItem>America/Bahia           -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Bahia_Banderas  -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Barbados        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Belem           -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Belize          -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Blanc-Sablon    -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Boa_Vista       -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Bogota          -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Boise           -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Buenos_Aires    -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cambridge_Bay   -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Campo_Grande    -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cancun          -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Caracas         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Catamarca       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cayenne         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cayman          -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Chicago         -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Chihuahua       -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Coral_Harbour   -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cordoba         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Costa_Rica      -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Creston         -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Cuiaba          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Curacao         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Danmarkshavn    +00:00</ComboBoxItem>
+                    <ComboBoxItem>America/Dawson          -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Dawson_Creek    -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Denver          -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Detroit         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Dominica        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Edmonton        -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Eirunepe        -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/El_Salvador     -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Ensenada        -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Fort_Nelson     -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Fort_Wayne      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Fortaleza       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Glace_Bay       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Godthab         -02:00</ComboBoxItem>
+                    <ComboBoxItem>America/Goose_Bay       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Grand_Turk      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Grenada         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Guadeloupe      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Guatemala       -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Guayaquil       -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Guyana          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Halifax         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Havana          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Hermosillo      -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Indianapolis    -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Knox    -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Marengo -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Petersburg      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Tell_City       -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Vevay   -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Vincennes       -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indiana/Winamac -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Indianapolis    -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Inuvik          -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Iqaluit         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Jamaica         -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Jujuy           -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Juneau          -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/Kentucky/Louisville     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Kentucky/Monticello     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Knox_IN         -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Kralendijk      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/La_Paz          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Lima            -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Los_Angeles     -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Louisville      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Lower_Princes   -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Maceio          -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Managua         -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Manaus          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Marigot         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Martinique      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Matamoros       -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Mazatlan        -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Mendoza         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Menominee       -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Merida          -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Metlakatla      -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/Mexico_City     -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Miquelon        -02:00</ComboBoxItem>
+                    <ComboBoxItem>America/Moncton         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Monterrey       -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Montevideo      -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Montreal        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Montserrat      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Nassau          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/New_York        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Nipigon         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Nome            -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/Noronha         -02:00</ComboBoxItem>
+                    <ComboBoxItem>America/North_Dakota/Beulah     -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/North_Dakota/Center     -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/North_Dakota/New_Salem  -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Nuuk            -02:00</ComboBoxItem>
+                    <ComboBoxItem>America/Ojinaga         -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Panama          -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Pangnirtung     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Paramaribo      -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Phoenix         -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Port-au-Prince  -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Port_of_Spain   -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Porto_Acre      -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Porto_Velho     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Puerto_Rico     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Punta_Arenas    -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Rainy_River     -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Rankin_Inlet    -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Recife          -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Regina          -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Resolute        -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Rio_Branco      -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Rosario         -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Santa_Isabel    -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Santarem        -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Santiago        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Santo_Domingo   -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Sao_Paulo       -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Scoresbysund    +00:00</ComboBoxItem>
+                    <ComboBoxItem>America/Shiprock        -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Sitka           -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/St_Barthelemy   -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/St_Johns        -02:30</ComboBoxItem>
+                    <ComboBoxItem>America/St_Kitts        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/St_Lucia        -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/St_Thomas       -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/St_Vincent      -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Swift_Current   -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Tegucigalpa     -06:00</ComboBoxItem>
+                    <ComboBoxItem>America/Thule           -03:00</ComboBoxItem>
+                    <ComboBoxItem>America/Thunder_Bay     -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Tijuana         -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Toronto         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Tortola         -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Vancouver       -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Virgin          -04:00</ComboBoxItem>
+                    <ComboBoxItem>America/Whitehorse      -07:00</ComboBoxItem>
+                    <ComboBoxItem>America/Winnipeg        -05:00</ComboBoxItem>
+                    <ComboBoxItem>America/Yakutat         -08:00</ComboBoxItem>
+                    <ComboBoxItem>America/Yellowknife     -06:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Casey        +11:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Davis        +07:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/DumontDUrville       +10:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Macquarie    +10:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Mawson       +05:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/McMurdo      +12:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Palmer       -03:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Rothera      -03:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/South_Pole   +12:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Syowa        +03:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Troll        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Antarctica/Vostok       +06:00</ComboBoxItem>
+                    <ComboBoxItem>Arctic/Longyearbyen     +02:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Aden               +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Almaty             +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Amman              +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Anadyr             +12:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Aqtau              +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Aqtobe             +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ashgabat           +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ashkhabad          +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Atyrau             +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Baghdad            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Bahrain            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Baku               +04:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Bangkok            +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Barnaul            +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Beirut             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Bishkek            +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Brunei             +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Calcutta           +05:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Chita              +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Choibalsan         +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Chongqing          +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Chungking          +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Colombo            +05:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Dacca              +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Damascus           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Dhaka              +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Dili               +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Dubai              +04:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Dushanbe           +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Famagusta          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Gaza               +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Harbin             +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Hebron             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ho_Chi_Minh        +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Hong_Kong          +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Hovd               +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Irkutsk            +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Istanbul           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Jakarta            +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Jayapura           +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Jerusalem          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kabul              +04:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kamchatka          +12:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Karachi            +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kashgar            +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kathmandu          +05:45</ComboBoxItem>
+                    <ComboBoxItem>Asia/Katmandu           +05:45</ComboBoxItem>
+                    <ComboBoxItem>Asia/Khandyga           +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kolkata            +05:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Krasnoyarsk        +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kuala_Lumpur       +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kuching            +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Kuwait             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Macao              +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Macau              +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Magadan            +11:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Makassar           +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Manila             +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Muscat             +04:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Nicosia            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Novokuznetsk       +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Novosibirsk        +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Omsk               +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Oral               +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Phnom_Penh         +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Pontianak          +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Pyongyang          +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Qatar              +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Qostanay           +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Qyzylorda          +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Rangoon            +06:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Riyadh             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Saigon             +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Sakhalin           +11:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Samarkand          +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Seoul              +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Shanghai           +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Singapore          +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Srednekolymsk      +11:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Taipei             +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tashkent           +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tbilisi            +04:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tehran             +04:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tel_Aviv           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Thimbu             +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Thimphu            +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tokyo              +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Tomsk              +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ujung_Pandang      +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ulaanbaatar        +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ulan_Bator         +08:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Urumqi             +06:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Ust-Nera           +10:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Vientiane          +07:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Vladivostok        +10:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Yakutsk            +09:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Yangon             +06:30</ComboBoxItem>
+                    <ComboBoxItem>Asia/Yekaterinburg      +05:00</ComboBoxItem>
+                    <ComboBoxItem>Asia/Yerevan            +04:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Azores         +00:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Bermuda        -03:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Canary         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Cape_Verde     -01:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Faeroe         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Faroe          +01:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Jan_Mayen      +02:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Madeira        +01:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Reykjavik      +00:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/South_Georgia  -02:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/St_Helena      +00:00</ComboBoxItem>
+                    <ComboBoxItem>Atlantic/Stanley        -03:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/ACT           +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Adelaide      +09:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Brisbane      +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Broken_Hill   +09:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Canberra      +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Currie        +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Darwin        +09:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Eucla         +08:45</ComboBoxItem>
+                    <ComboBoxItem>Australia/Hobart        +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/LHI           +10:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Lindeman      +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Lord_Howe     +10:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Melbourne     +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/NSW           +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/North         +09:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Perth         +08:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Queensland    +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/South         +09:30</ComboBoxItem>
+                    <ComboBoxItem>Australia/Sydney        +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Tasmania      +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Victoria      +10:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/West          +08:00</ComboBoxItem>
+                    <ComboBoxItem>Australia/Yancowinna    +09:30</ComboBoxItem>
+                    <ComboBoxItem>Brazil/Acre             -05:00</ComboBoxItem>
+                    <ComboBoxItem>Brazil/DeNoronha        -02:00</ComboBoxItem>
+                    <ComboBoxItem>Brazil/East             -03:00</ComboBoxItem>
+                    <ComboBoxItem>Brazil/West             -04:00</ComboBoxItem>
+                    <ComboBoxItem>CET                     +02:00</ComboBoxItem>
+                    <ComboBoxItem>CST6CDT                 -05:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Atlantic         -03:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Central          -05:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Eastern          -04:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Mountain         -06:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Newfoundland     -02:30</ComboBoxItem>
+                    <ComboBoxItem>Canada/Pacific          -07:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Saskatchewan     -06:00</ComboBoxItem>
+                    <ComboBoxItem>Canada/Yukon            -07:00</ComboBoxItem>
+                    <ComboBoxItem>Chile/Continental       -04:00</ComboBoxItem>
+                    <ComboBoxItem>Chile/EasterIsland      -06:00</ComboBoxItem>
+                    <ComboBoxItem>Cuba                    -04:00</ComboBoxItem>
+                    <ComboBoxItem>EET                     +03:00</ComboBoxItem>
+                    <ComboBoxItem>EST                     -05:00</ComboBoxItem>
+                    <ComboBoxItem>EST5EDT                 -04:00</ComboBoxItem>
+                    <ComboBoxItem>Egypt                   +02:00</ComboBoxItem>
+                    <ComboBoxItem>Eire                    +01:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT                 +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+0               +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+1               -01:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+10              -10:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+11              -11:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+12              -12:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+2               -02:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+3               -03:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+4               -04:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+5               -05:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+6               -06:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+7               -07:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+8               -08:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT+9               -09:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-0               +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-1               +01:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-10              +10:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-11              +11:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-12              +12:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-13              +13:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-14              +14:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-2               +02:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-3               +03:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-4               +04:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-5               +05:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-6               +06:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-7               +07:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-8               +08:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT-9               +09:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/GMT0                +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/Greenwich           +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/UCT                 +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/UTC                 +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/Universal           +00:00</ComboBoxItem>
+                    <ComboBoxItem>Etc/Zulu                +00:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Amsterdam        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Andorra          +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Astrakhan        +04:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Athens           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Belfast          +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Belgrade         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Berlin           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Bratislava       +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Brussels         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Bucharest        +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Budapest         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Busingen         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Chisinau         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Copenhagen       +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Dublin           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Gibraltar        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Guernsey         +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Helsinki         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Isle_of_Man      +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Istanbul         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Jersey           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Kaliningrad      +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Kiev             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Kirov            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Lisbon           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Ljubljana        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/London           +01:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Luxembourg       +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Madrid           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Malta            +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Mariehamn        +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Minsk            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Monaco           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Moscow           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Nicosia          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Oslo             +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Paris            +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Podgorica        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Prague           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Riga             +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Rome             +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Samara           +04:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/San_Marino       +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Sarajevo         +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Saratov          +04:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Simferopol       +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Skopje           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Sofia            +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Stockholm        +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Tallinn          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Tirane           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Tiraspol         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Ulyanovsk        +04:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Uzhgorod         +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Vaduz            +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Vatican          +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Vienna           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Vilnius          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Volgograd        +04:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Warsaw           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Zagreb           +02:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Zaporozhye       +03:00</ComboBoxItem>
+                    <ComboBoxItem>Europe/Zurich           +02:00</ComboBoxItem>
+                    <ComboBoxItem>GB                      +01:00</ComboBoxItem>
+                    <ComboBoxItem>GB-Eire                 +01:00</ComboBoxItem>
+                    <ComboBoxItem>GMT                     +00:00</ComboBoxItem>
+                    <ComboBoxItem>GMT+0                   +00:00</ComboBoxItem>
+                    <ComboBoxItem>GMT-0                   +00:00</ComboBoxItem>
+                    <ComboBoxItem>GMT0                    +00:00</ComboBoxItem>
+                    <ComboBoxItem>Greenwich               +00:00</ComboBoxItem>
+                    <ComboBoxItem>HST                     -10:00</ComboBoxItem>
+                    <ComboBoxItem>Hongkong                +08:00</ComboBoxItem>
+                    <ComboBoxItem>Iceland                 +00:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Antananarivo     +03:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Chagos           +06:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Christmas        +07:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Cocos            +06:30</ComboBoxItem>
+                    <ComboBoxItem>Indian/Comoro           +03:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Kerguelen        +05:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Mahe             +04:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Maldives         +05:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Mauritius        +04:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Mayotte          +03:00</ComboBoxItem>
+                    <ComboBoxItem>Indian/Reunion          +04:00</ComboBoxItem>
+                    <ComboBoxItem>Iran                    +04:30</ComboBoxItem>
+                    <ComboBoxItem>Israel                  +03:00</ComboBoxItem>
+                    <ComboBoxItem>Jamaica                 -05:00</ComboBoxItem>
+                    <ComboBoxItem>Japan                   +09:00</ComboBoxItem>
+                    <ComboBoxItem>Kwajalein               +12:00</ComboBoxItem>
+                    <ComboBoxItem>Libya                   +02:00</ComboBoxItem>
+                    <ComboBoxItem>MET                     +02:00</ComboBoxItem>
+                    <ComboBoxItem>MST                     -07:00</ComboBoxItem>
+                    <ComboBoxItem>MST7MDT                 -06:00</ComboBoxItem>
+                    <ComboBoxItem>Mexico/BajaNorte        -07:00</ComboBoxItem>
+                    <ComboBoxItem>Mexico/BajaSur          -06:00</ComboBoxItem>
+                    <ComboBoxItem>Mexico/General          -05:00</ComboBoxItem>
+                    <ComboBoxItem>NZ                      +12:00</ComboBoxItem>
+                    <ComboBoxItem>NZ-CHAT                 +12:45</ComboBoxItem>
+                    <ComboBoxItem>Navajo                  -06:00</ComboBoxItem>
+                    <ComboBoxItem>PRC                     +08:00</ComboBoxItem>
+                    <ComboBoxItem>PST8PDT                 -07:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Apia            +13:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Auckland        +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Bougainville    +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Chatham         +12:45</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Chuuk           +10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Easter          -06:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Efate           +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Enderbury       +13:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Fakaofo         +13:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Fiji            +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Funafuti        +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Galapagos       -06:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Gambier         -09:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Guadalcanal     +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Guam            +10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Honolulu        -10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Johnston        -10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Kiritimati      +14:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Kosrae          +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Kwajalein       +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Majuro          +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Marquesas       -09:30</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Midway          -11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Nauru           +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Niue            -11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Norfolk         +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Noumea          +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Pago_Pago       -11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Palau           +09:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Pitcairn        -08:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Pohnpei         +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Ponape          +11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Port_Moresby    +10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Rarotonga       -10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Saipan          +10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Samoa           -11:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Tahiti          -10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Tarawa          +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Tongatapu       +13:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Truk            +10:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Wake            +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Wallis          +12:00</ComboBoxItem>
+                    <ComboBoxItem>Pacific/Yap             +10:00</ComboBoxItem>
+                    <ComboBoxItem>Poland                  +02:00</ComboBoxItem>
+                    <ComboBoxItem>Portugal                +01:00</ComboBoxItem>
+                    <ComboBoxItem>ROC                     +08:00</ComboBoxItem>
+                    <ComboBoxItem>ROK                     +09:00</ComboBoxItem>
+                    <ComboBoxItem>Singapore               +08:00</ComboBoxItem>
+                    <ComboBoxItem>Turkey                  +03:00</ComboBoxItem>
+                    <ComboBoxItem>UCT                     +00:00</ComboBoxItem>
+                    <ComboBoxItem>US/Alaska               -08:00</ComboBoxItem>
+                    <ComboBoxItem>US/Aleutian             -09:00</ComboBoxItem>
+                    <ComboBoxItem>US/Arizona              -07:00</ComboBoxItem>
+                    <ComboBoxItem>US/Central              -05:00</ComboBoxItem>
+                    <ComboBoxItem>US/East-Indiana         -04:00</ComboBoxItem>
+                    <ComboBoxItem>US/Eastern              -04:00</ComboBoxItem>
+                    <ComboBoxItem>US/Hawaii               -10:00</ComboBoxItem>
+                    <ComboBoxItem>US/Indiana-Starke       -05:00</ComboBoxItem>
+                    <ComboBoxItem>US/Michigan             -04:00</ComboBoxItem>
+                    <ComboBoxItem>US/Mountain             -06:00</ComboBoxItem>
+                    <ComboBoxItem>US/Pacific              -07:00</ComboBoxItem>
+                    <ComboBoxItem>US/Samoa                -11:00</ComboBoxItem>
+                    <ComboBoxItem>UTC                     +00:00</ComboBoxItem>
+                    <ComboBoxItem>Universal               +00:00</ComboBoxItem>
+                    <ComboBoxItem>W-SU                    +03:00</ComboBoxItem>
+                    <ComboBoxItem>WET                     +01:00</ComboBoxItem>
+                    <ComboBoxItem>Zulu                    +00:00</ComboBoxItem>
+                </ComboBox>
+            </Border>
+
+        </StackPanel>
+    </StackPanel>
 </UserControl>
