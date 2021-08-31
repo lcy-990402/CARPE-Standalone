@@ -12,7 +12,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
 
         <!--DataGrid 배경색 , 글자색 설정-->
-        <Setter Property="Background" Value="TransParent"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="White"/>
 
         <!--DataGrid 내용의 Background 설정-->
@@ -28,7 +28,6 @@
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="FontWeight" Value="Bold"/>
                 </Style>
             </Setter.Value>

@@ -51,8 +51,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
         #region Method
         public AnalyzeViewModel()
         {
-            HomeVM = new HomeViewmodel();
-            TempVM = new TempViewModel();
+            HomeVM = new HomeViewmodel();           
             TableVM = new TableViewModel();
             TreeVM = new TreeViewModel();
 
@@ -75,6 +74,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 
             TempViewCommand = new RelayCommand(o =>
             {
+                if(TempVM == null) TempVM = new TempViewModel();
                 CurrentView = TempVM;
             });
 

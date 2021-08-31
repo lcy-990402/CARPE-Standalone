@@ -273,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\Constant.cs" />
+    <Compile Include="MVVM\Model\DateModel.cs" />
     <Compile Include="MVVM\Model\TreeView\FileCount.cs" />
     <Compile Include="MVVM\Model\TreeView\Filter.cs" />
     <Compile Include="MVVM\Model\Settings.cs" />
