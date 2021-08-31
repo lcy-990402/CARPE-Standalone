@@ -78,23 +78,23 @@ namespace CarpeGUI_rework.MVVM.ViewModel
 
                     //start processing
                     
-                    if (page1.caseid != "")
+                    if (page1.caseid != null)
                     {
                         payload += "--cid " + page1.caseid + " ";
                     }
-                    if (page1.casename != "")
+                    if (page1.casename != null)
                     {
                         payload += "--case-name " + page1.casename + " ";
                     }
-                    if (page1.evidenceid != "")
+                    if (page1.evidenceid != null)
                     {
                         payload += "--eid " + page1.evidenceid + " ";
                     }
-                    if (page1.investigator != "")
+                    if (page1.investigator != null)
                     {
                         payload += "--investigator " + page1.investigator + " ";
                     }
-                    if (page1.description != "")
+                    if (page1.description != null)
                     {
                         payload += "--case_desc " + page1.description + " ";
                     }

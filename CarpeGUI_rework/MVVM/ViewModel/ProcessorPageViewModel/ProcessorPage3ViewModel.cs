@@ -56,6 +56,7 @@ namespace CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel
         }
         public void initiate(string payload)
         {
+            log_text += payload;
             Process p = new Process();
             p.StartInfo.FileName = @".\carpe.exe";
             p.StartInfo.Arguments = payload;
@@ -411,8 +412,10 @@ namespace CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel
             p.BeginOutputReadLine();
             string stderrx = p.StandardError.ReadToEnd();
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate {
-                if (stderrx != "")
+                if (stderrx != null)
                 {
+                    progress = 0;
+                    percent = "0%";
                     log_text += "\n------------------------------------------------------------------------";
                     log_text += "\n[ERROR]\n" + stderrx;
                     log_text += "\n------------------------------------------------------------------------";
