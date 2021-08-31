@@ -11,10 +11,12 @@ using System.Windows;
 namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 {
     class ProcessViewModel : ObservableObject
-    { 
+    {
+
+
         public RelayCommand NextButtonCommand { get; set; }
         public RelayCommand BeforeButtonCommand { get; set; }
-        
+
         public RelayCommand ProcessCommand { get; set; }
 
         public RelayCommand SendDataCommand { get; set; }
@@ -38,7 +40,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
 
         public ProcessViewModel()
         {
@@ -53,9 +55,9 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
             NextButtonCommand = new RelayCommand(o =>
             {
                 if (Page_CurrentView == page1)
-                { 
+                {
                     // check if values are empty
-                    if(page1.src_input == null || page1.output_input == null || page1.caseid == null || page1.evidenceid == null)
+                    if (page1.src_input == null || page1.output_input == null || page1.caseid == null || page1.evidenceid == null)
                     {
                         MessageBox.Show("Input Path, Output Path, CaseID, Evidence ID Must be Filled.");
                     }
@@ -74,24 +76,24 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
                     //Afterbutton.Visibility = Visibility.Hidden;
 
                     //start processing
-                    
-                    if (page1.caseid != "")
+
+                    if (page1.caseid != null)
                     {
                         payload += "--cid " + page1.caseid + " ";
                     }
-                    if (page1.casename != "")
+                    if (page1.casename != null)
                     {
                         payload += "--case-name " + page1.casename + " ";
                     }
-                    if (page1.evidenceid != "")
+                    if (page1.evidenceid != null)
                     {
                         payload += "--eid " + page1.evidenceid + " ";
                     }
-                    if (page1.investigator != "")
+                    if (page1.investigator != null)
                     {
                         payload += "--investigator " + page1.investigator + " ";
                     }
-                    if (page1.description != "")
+                    if (page1.description != null)
                     {
                         payload += "--case_desc " + page1.description + " ";
                     }
