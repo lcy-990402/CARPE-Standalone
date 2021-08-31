@@ -4,14 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CarpeGUI_rework.MVVM.View.ProcessorPage"
+             xmlns:ViewModels="clr-namespace:CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <ViewModels:ProcessorPage3ViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock Text="Processor (3/3)"
                    Foreground="White"
                    FontSize="28"
@@ -20,10 +25,11 @@
         <TextBox Name="log_text" 
                      Margin="10,38,8,10" 
                      IsReadOnly="True"
+                     Text="{Binding Path=log_text,UpdateSourceTrigger=PropertyChanged}"
                      TextWrapping="Wrap"
                      Background="Transparent"
                      ScrollViewer.CanContentScroll="True"   
-                     ScrollViewer.VerticalScrollBarVisibility="Visible" TextChanged="log_text_TextChanged"/>
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Border>
                 <TextBlock Name="progress_txt" 
@@ -42,17 +48,18 @@
                          Background="Transparent"
                          Foreground="White"
                          Maximum="100"
-                         Value="0" Height="50"/>
+                         Value="{Binding progress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50"/>
             </Border>
             <Border>
                 <TextBlock Name="percent"
                        Foreground="White"
                        VerticalAlignment="Center" HorizontalAlignment="Right" 
                        RenderTransformOrigin="0.495,-0.15"
-                       Text="--(%)" Margin="0,14,10,13"/>
+                       Text="{Binding percent, UpdateSourceTrigger=PropertyChanged}" Margin="0,14,10,13"/>
             </Border>
-            
+
         </StackPanel>
 
     </Grid>
+
 </UserControl>

@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:CarpeGUI_rework"
              xmlns:viewModel="clr-namespace:CarpeGUI_rework.MVVM.ViewModel"
              xmlns:processorViewModel="clr-namespace:CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel"
-             xmlns:view="clr-namespace:CarpeGUI_rework.MVVM.View"
+             xmlns:view="clr-namespace:CarpeGUI_rework.MVVM.View" 
              xmlns:processorview="clr-namespace:CarpeGUI_rework.MVVM.View.ProcessorPage"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
@@ -14,7 +14,12 @@
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/InputboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/NextButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/BeforeButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ListHeaderTheme.xaml"/>
+                <ResourceDictionary Source="Theme/SelectButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ListItemTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -31,6 +36,10 @@
             <DataTemplate DataType="{x:Type processorViewModel:ProcessorPage2ViewModel}">
                 <processorview:Processor02/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type processorViewModel:ProcessorPage3ViewModel}">
+                <processorview:Processor03/>
+            </DataTemplate>
+
 
         </ResourceDictionary>         
     </Application.Resources>

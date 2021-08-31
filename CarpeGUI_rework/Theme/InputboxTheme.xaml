@@ -7,7 +7,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10"
                             Background="#353340"
-                            Width="400" Height="30">
+                            Width="400" Height="35">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="10"
@@ -20,7 +20,6 @@
                                      x:Name="Inputbox"/>
 
                             <TextBlock IsHitTestVisible="False"
-                                       Text=" ... "
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10,0,0,0"

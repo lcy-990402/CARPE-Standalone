@@ -27,30 +27,5 @@ namespace CarpeGUI_rework.MVVM.View.ProcessorPage
             InitializeComponent();
         }
 
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = @".\CarpeAnalyzer_GUI.exe";
-            p.StartInfo.WorkingDirectory = @".\";
-            p.StartInfo.CreateNoWindow = false;
-            p.StartInfo.UseShellExecute = false;
-            p.EnableRaisingEvents = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.RedirectStandardError = true;
-
-            p.Start();
-
-            //명령어 전달
-
-        }
-        private void log_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            log_text.ScrollToEnd();
-        }
-        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
-        {
-            string src;
-            string query;
-        }
     }
 }

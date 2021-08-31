@@ -3,11 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CarpeGUI_rework.MVVM.View.ProcessorPage"
+             xmlns:processorViewModel="clr-namespace:CarpeGUI_rework.MVVM.ViewModel"
+             xmlns:local="clr-namespace:CarpeGUI_rework.MVVM.ViewModel"
+             xmlns:ViewModels="clr-namespace:CarpeGUI_rework.MVVM.ViewModel.ProcessorPageViewModel"
              mc:Ignorable="d" 
              BorderThickness="0"
              Background="Transparent"
              d:DesignHeight="470" d:DesignWidth="700">
+
+
+    <UserControl.DataContext>
+        <ViewModels:ProcessorPage2ViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <TextBlock Text="Processor (2/3)"
                    Foreground="White"
@@ -15,7 +22,7 @@
                    HorizontalAlignment="Left"
                    Margin="10,0,0,20" />
         <StackPanel>
-            <Grid Background="Transparent"  Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
+            <Grid Background="Transparent"  Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Height="365">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="151*"/>
                     <ColumnDefinition Width="369*"/>
@@ -29,21 +36,24 @@
                 Select modules for processing
             </Bold>
                 </TextBlock>
-                <ListView Grid.Row="0" Name="moduleListView" FontSize="15" Margin="8,30,0,10" Grid.ColumnSpan="2" Background="Transparent">
+                <ListView Grid.Row="0" Name="moduleListView" FontSize="15" Margin="8,30,0,10" Grid.ColumnSpan="2"
+                          Background="Transparent" Foreground="white"
+                          ItemsSource="{Binding ModuleList, Mode=TwoWay, NotifyOnTargetUpdated=True}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <ListView.View>
-                        <GridView>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource listheaderTheme}">
                             <GridView.Columns>
                                 <GridViewColumn>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding chk}"/>
+                                            <CheckBox IsChecked="{Binding chk}" Background="Transparent" Foreground="white"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="index" DisplayMemberBinding="{Binding index}" Width="40"/>
-                                <GridViewColumn Header="Module name" DisplayMemberBinding="{Binding module_name}" Width="Auto"/>
-                                <GridViewColumn Header="Level" DisplayMemberBinding="{Binding module_level}" Width="50"/>
-                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width="Auto"/>
+                                <GridViewColumn Header="index" DisplayMemberBinding="{Binding index}" Width="45" HeaderContainerStyle="{StaticResource listTheme}" />
+                                <GridViewColumn Header="Module name" DisplayMemberBinding="{Binding module_name}" Width="Auto" HeaderContainerStyle="{StaticResource listTheme}"/>
+                                <GridViewColumn Header="Level" DisplayMemberBinding="{Binding module_level}" Width="50" HeaderContainerStyle="{StaticResource listTheme}"/>
+                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width=" 290" HeaderContainerStyle="{StaticResource listTheme}"/>
                             </GridView.Columns>
                         </GridView>
 
@@ -52,14 +62,18 @@
 
                 <Button x:Name="select1" 
                     Content="Select All" 
+                    Command="{Binding SelectAllCommand }"
+                        Style="{StaticResource SelectButton}"
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Margin="300,5,0,0" 
-                    Width="90" Click="select1_Click" Grid.Column="1" />
+                    Margin="300,0,0,0" 
+                    Width="90" Grid.Column="1" />
                 <Border Width="100"/>
                 <Button x:Name="select2" Content="Unselect All" 
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Margin="396,5,0,0" 
-                    Width="90" Click="select2_Click" Grid.Column="1"/>
+                        Command="{Binding disSelectAllCommand}"
+                        Style="{StaticResource SelectButton}"
+                    Margin="396,0,0,0" 
+                    Width="90" Grid.Column="1"/>
 
             </Grid>
             <Grid Background="Transparent" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" >
@@ -76,6 +90,7 @@
             </Grid>
         </StackPanel>
     </StackPanel>
+
 
 
 </UserControl>
