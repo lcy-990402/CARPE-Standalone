@@ -6,8 +6,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10"
-                            Background="#353340"
-                            Width="400" Height="35">
+                            Background="#708090"
+                            Width="600" Height="40">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="10"

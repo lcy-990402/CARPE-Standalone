@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CARPE_Standalone_v0._0.MVVM.View._ProcessView"
              xmlns:processViewModel ="clr-namespace:CARPE_Standalone_v0._0.MVVM.ViewModel._ProcessViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="850">
     <UserControl.DataContext>
         <processViewModel:Process2ViewModel/>
     </UserControl.DataContext>
@@ -14,41 +14,52 @@
         <TextBlock Text="Processor (2/3)"
                    Foreground="White"
                    FontSize="28"
+                   Height="60"
+                   FontWeight="Black"
                    HorizontalAlignment="Left"
-                   Margin="10,0,0,20" />
-        <StackPanel>
-            <Grid Background="Transparent"  Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Height="365">
+                   VerticalAlignment="Center"
+                   Margin="30,30,0,20" />
+        <StackPanel Height="500">
+            <Grid Background="Transparent"  Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Height="365" Margin="30,0,30,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="61*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="151*"/>
                     <ColumnDefinition Width="369*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Left" 
                        VerticalAlignment="Top" 
-                       FontSize="15" 
+                       FontSize="18"
                        Foreground="White"
-                       Margin="8,4,0,0" Grid.ColumnSpan="2">
+                       Margin="20,4,0,0" Grid.ColumnSpan="2">
             <Bold>
                 Select modules for processing
             </Bold>
                 </TextBlock>
-                <ListView Grid.Row="0" Name="moduleListView" FontSize="15" Margin="8,30,0,10" Grid.ColumnSpan="2"
+                <ListView Grid.Row="1" Name="moduleListView" FontSize="15" Margin="8,10,0,-50" Grid.ColumnSpan="2"
                           Background="Transparent" Foreground="white"
+                          Height="350"
+                          BorderThickness="0"
+                          VerticalAlignment="Center"
                           ItemsSource="{Binding ModuleList, Mode=TwoWay, NotifyOnTargetUpdated=True}"
-                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                          ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{StaticResource listheaderTheme}">
                             <GridView.Columns>
                                 <GridViewColumn>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding chk}" Background="Transparent" Foreground="white"/>
+                                            <CheckBox IsChecked="{Binding chk}" Background="Transparent" Foreground="white" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="index" DisplayMemberBinding="{Binding index}" Width="45" HeaderContainerStyle="{StaticResource listTheme}" />
                                 <GridViewColumn Header="Module name" DisplayMemberBinding="{Binding module_name}" Width="Auto" HeaderContainerStyle="{StaticResource listTheme}"/>
                                 <GridViewColumn Header="Level" DisplayMemberBinding="{Binding module_level}" Width="50" HeaderContainerStyle="{StaticResource listTheme}"/>
-                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width=" 290" HeaderContainerStyle="{StaticResource listTheme}"/>
+                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width="444" HeaderContainerStyle="{StaticResource listTheme}"/>
                             </GridView.Columns>
                         </GridView>
 
@@ -60,14 +71,14 @@
                     Command="{Binding SelectAllCommand }"
                         Style="{StaticResource SelectButton}"
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Margin="300,0,0,0" 
+                    Margin="386,25,0,0" 
                     Width="90" Grid.Column="1" />
-                <Border Width="100"/>
+                <Border Width="100" Margin="62,0" Grid.RowSpan="3"/>
                 <Button x:Name="select2" Content="Unselect All" 
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Command="{Binding disSelectAllCommand}"
                         Style="{StaticResource SelectButton}"
-                    Margin="396,0,0,0" 
+                    Margin="476,25,-5,0" 
                     Width="90" Grid.Column="1"/>
 
             </Grid>

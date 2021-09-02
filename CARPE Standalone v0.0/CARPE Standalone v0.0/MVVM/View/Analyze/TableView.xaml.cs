@@ -24,5 +24,11 @@ namespace CARPE_Standalone_v0._0.MVVM.View.Analyze
         {
             InitializeComponent();
         }
+        private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string header = e.Column.Header.ToString();
+
+            e.Column.Header = header.Replace("_", "__");
+        }
     }
 }

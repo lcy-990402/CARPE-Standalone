@@ -23,6 +23,10 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
         private DataTable _dataTable;
         private ObservableCollection<string> _dbTables;
         private string _selectedTable;
+        private DataTable BackupDT;
+
+        private string fieldName;
+        private string keyWord;
 
         public DataTable MyDataTable
         {
@@ -55,7 +59,36 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
             }
         }
 
+        public string FieldName
+        {
+            get
+            {
+                return fieldName;
+            }
+
+            set
+            {
+                fieldName = value;
+                OnPropertyChanged(FieldName);
+            }
+        }
+
+        public string KeyWord
+        {
+            get
+            {
+                return keyWord;
+            }
+            set
+            {
+                keyWord = value;
+                OnPropertyChanged(KeyWord);
+            }
+        }
+
+
         public RelayCommand SelectedTableChanged { get; set; }
+        public RelayCommand QueryButtonPressed { get; set; }
 
         #endregion
 
@@ -64,6 +97,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
         public TableViewModel()
         {
             _dataTable = new DataTable();
+            BackupDT = new DataTable();
             _dbTables = new ObservableCollection<string>();
 
             // Table 이름 불러오기
@@ -87,10 +121,22 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
                 tmpdataTable.Load(sql_reader);
 
                 MyDataTable = tmpdataTable;
+                BackupDT = tmpdataTable;
+
+            });
+
+            QueryButtonPressed = new RelayCommand(o =>
+            {
+                DataRow[] dataRows = BackupDT.Select(FieldName + " LIKE '%" + KeyWord + "%'");
+                if (dataRows.Length != 0) MyDataTable = dataRows.CopyToDataTable();
+                else MyDataTable.Rows.Clear();
+
+
 
             });
 
         }
+
 
         #endregion
     }
