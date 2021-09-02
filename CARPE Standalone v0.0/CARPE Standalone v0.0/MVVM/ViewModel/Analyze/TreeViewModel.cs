@@ -85,6 +85,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
         }
 
         public RelayCommand SelectedItemChanged { get; set; }
+        public RelayCommand MouseDoubleClick { get; set; }
 
         #endregion
 
@@ -113,6 +114,12 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel.Analyze
             SelectedItemChanged = new RelayCommand(o =>
             {
                 MainListView = GetTreeNodeChild(SelectedTreeNode);
+            });
+
+            MouseDoubleClick = new RelayCommand(x =>
+            {               
+                MainListView = GetTreeNodeChild(x as TreeNode);
+                
             });
 
         }

@@ -24,5 +24,10 @@ namespace CARPE_Standalone_v0._0.MVVM.View.Analyze
         {
             InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

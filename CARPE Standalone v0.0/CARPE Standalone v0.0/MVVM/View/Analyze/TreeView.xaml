@@ -62,12 +62,20 @@
             </i:Interaction.Triggers>
         </TreeView>
 
-        <ListView Grid.Row="1"
+        <ListView x:Name="ListView1"
+                  Grid.Row="1"
                   Grid.Column="1"
                   ItemTemplate="{StaticResource MainListViewTemplate}"
                   ItemsSource="{Binding MainListView}"
                   Background="Transparent"
                   Foreground="White">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction 
+                        Command="{Binding MouseDoubleClick}"
+                        CommandParameter="{Binding ElementName=ListView1, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
