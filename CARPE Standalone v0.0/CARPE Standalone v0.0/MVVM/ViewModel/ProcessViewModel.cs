@@ -77,6 +77,9 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
 
                     //start processing
 
+                    payload += "\"" + page1.src_input + "\" ";
+                    payload += "\"" + page1.output_input + "\" ";
+
                     if (page1.caseid != null)
                     {
                         payload += "--cid " + page1.caseid + " ";
@@ -99,7 +102,7 @@ namespace CARPE_Standalone_v0._0.MVVM.ViewModel
                     }
                     if (page1.timezone != null)
                     {
-                        payload += "-z " + page1.timezone + " ";
+                        payload += "-z " + page1.timezone.Split(' ')[0] + " ";
                     }
                     //
                     //make ignore option ->  TBD

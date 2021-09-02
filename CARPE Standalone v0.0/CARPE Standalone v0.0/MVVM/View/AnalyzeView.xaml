@@ -58,7 +58,7 @@
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding TableViewCommand}"/>
 
-                    <RadioButton Content="Temp View"
+                    <RadioButton Content="App History"
                                  Height="50"
                                  FontSize="14"
                                  Foreground="White"
